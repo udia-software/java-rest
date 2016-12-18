@@ -9,13 +9,17 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Demonstration purposes only.
+ *
+ * Use a concurrent hash map to store the todos in memory.
+ * For more practical scenarios, this should be replaced with a data access object for managing communication with a
+ * persistence layer, like a SQL/NoSQL DB
+ */
 public class DefaultTodoService implements TodoService {
-    // For demonstration purposes only, use a concurrent hash map to store in memory
-    // In practical scenarios, use a data access object to store in DB
-    Map<String, Todo> todos = new ConcurrentHashMap<String, Todo>();
+    Map<String, Todo> todos = new ConcurrentHashMap<>();
 
-    // Singleton for demonstration
-    // Practical scenario, use dependency injection
+    // Singleton for demonstration, in a practical scenario, use dependency injection
     private static final DefaultTodoService INSTANCE = new DefaultTodoService();
 
     // Simulate single user for demo
@@ -24,7 +28,6 @@ public class DefaultTodoService implements TodoService {
     public DefaultTodoService() {
         // create a user
         User user = new User();
-        user.setId(UUID.randomUUID().toString().replace("-", ""));
         user.setUsername("udia");
         user.setGivenName("Adam");
         user.setSurname("West");
@@ -33,7 +36,7 @@ public class DefaultTodoService implements TodoService {
         // add one sample todoObject
         Todo sampleTodo = new Todo();
         sampleTodo.setName("Hello World!");
-        save(sampleTodo);
+        create(sampleTodo);
     }
 
     @Override
@@ -47,13 +50,17 @@ public class DefaultTodoService implements TodoService {
     }
 
     @Override
-    public Todo save(Todo todo) {
+    public Todo create(Todo todo) {
+        String id = UUID.randomUUID().toString();
+        this.todos.put(id, todo);
+        return todo;
+    }
+
+    @Override
+    public Todo update(Todo todo) {
         String id = todo.getId();
         if (id == null) {
-            id = UUID.randomUUID().toString().replace("-", "");
-            todo.setId(id);
-            todo.setCreated(new Date());
-            todo.setUser(getCurrentUser());
+            return null;
         }
         this.todos.put(id, todo);
         return todo;

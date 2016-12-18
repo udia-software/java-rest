@@ -51,7 +51,7 @@ public class TodoController {
         if (todo == null) {
             return Response.status(400).entity("400 - Please add todo details.").build();
         }
-        todo = todoService.save(todo);
+        todo = todoService.create(todo);
         return Response.created(new URI("/todos/" + todo.getId())).build();
     }
 
@@ -97,7 +97,7 @@ public class TodoController {
             existing.setCreated(todo.getCreated());
         }
 
-        existing = todoService.save(existing);
+        existing = todoService.update(existing);
         return Response.ok(existing, MediaType.APPLICATION_JSON).build();
     }
 
@@ -117,7 +117,7 @@ public class TodoController {
             return Response.status(404).entity("404 - Todo Not Found").build();
         }
 
-        existing = todoService.save(todo);
+        existing = todoService.update(todo);
         return Response.ok(existing, MediaType.APPLICATION_JSON).build();
     }
 

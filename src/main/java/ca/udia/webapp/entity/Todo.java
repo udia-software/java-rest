@@ -4,17 +4,27 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
+import java.util.UUID;
 
 @XmlRootElement(name = "todo")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Todo extends Entity {
+public class Todo {
 
+    private String id;
     private String name;
     private boolean done;
     private Date created;
     private User user;
 
     public Todo() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

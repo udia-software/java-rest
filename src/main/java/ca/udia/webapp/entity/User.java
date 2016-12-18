@@ -6,13 +6,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class User extends Entity {
+public class User {
 
     private String username;
     private String givenName;
     private String surname;
 
     public User() {
+        super();
     }
 
     public String getUsername() {
@@ -41,8 +42,7 @@ public class User extends Entity {
 
     @Override
     public String toString() {
-        return "Todo [id=" + this.getId() +
-                ", username=" + this.getUsername() +
+        return "Todo [username=" + this.getUsername() +
                 ", givenName=" + this.getGivenName() +
                 ", surname=" + this.getSurname() + "]";
     }

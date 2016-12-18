@@ -9,7 +9,9 @@ public interface TodoService {
 
     Todo getById(String id);
 
-    Todo save(Todo todo);
+    Todo create(Todo todo);
+
+    Todo update(Todo todo);
 
     Todo deleteById(String id);
 }
