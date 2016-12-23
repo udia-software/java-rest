@@ -14,7 +14,6 @@ public class Todo {
     private String name;
     private boolean done;
     private Date created;
-    private User user;
 
     public Todo() {
     }
@@ -51,20 +50,11 @@ public class Todo {
         this.created = created;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Todo [id=" + this.getId() +
                 ", name=" + this.getName() +
                 ", done=" + String.valueOf(this.isDone()) +
-                ", created=" + this.getCreated().toString() +
-                ", user=" + this.getUser().toString() + "]";
+                ", created=" + this.getCreated().toString() + "]";
     }
 }

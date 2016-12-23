@@ -51,7 +51,7 @@ public class TodoController {
         if (todo == null) {
             return Response.status(400).entity("400 - Please add todo details.").build();
         }
-        todo = todoService.create(todo);
+        todo = todoService.create(todo.getName(), todo.isDone());
         return Response.created(new URI("/todos/" + todo.getId())).build();
     }
 
@@ -89,9 +89,6 @@ public class TodoController {
 
         if (todo.getName() != null) {
             existing.setName(todo.getName());
-        }
-        if (todo.getUser() != null) {
-            existing.setUser(todo.getUser());
         }
         if (todo.getCreated() != null) {
             existing.setCreated(todo.getCreated());

@@ -3,10 +3,7 @@ package ca.udia.webapp.service;
 import ca.udia.webapp.entity.Todo;
 import ca.udia.webapp.entity.User;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -34,14 +31,14 @@ public class DefaultTodoService implements TodoService {
         this.user = user;
 
         // add one sample todoObject
-        Todo sampleTodo = new Todo();
-        sampleTodo.setName("Hello World!");
-        create(sampleTodo);
+        create("Hello world!", false);
     }
 
     @Override
-    public Collection<Todo> getTodos() {
-        return this.todos.values();
+    public List<Todo> getTodos() {
+        List<Todo> lTodos = new ArrayList<>();
+        lTodos.addAll(this.todos.values());
+        return lTodos;
     }
 
     @Override
@@ -50,8 +47,12 @@ public class DefaultTodoService implements TodoService {
     }
 
     @Override
-    public Todo create(Todo todo) {
+    public Todo create(String name, boolean done) {
         String id = UUID.randomUUID().toString();
+        Todo todo = new Todo();
+        todo.setId(id);
+        todo.setName(name);
+        todo.setDone(done);
         this.todos.put(id, todo);
         return todo;
     }

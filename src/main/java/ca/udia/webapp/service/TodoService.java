@@ -1,15 +1,16 @@
 package ca.udia.webapp.service;
 
 import ca.udia.webapp.entity.Todo;
+import ca.udia.webapp.entity.User;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface TodoService {
-    Collection<Todo> getTodos();
+    List<Todo> getTodos();
 
     Todo getById(String id);
 
-    Todo create(Todo todo);
+    Todo create(String name, boolean done);
 
     Todo update(Todo todo);
 

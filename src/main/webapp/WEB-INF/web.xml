@@ -20,4 +20,38 @@
         <servlet-name>App</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
+
+    <security-constraint>
+        <display-name>Authentication Security Constraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Area - Allow methods</web-resource-name>
+            <!-- Define the context-relative URL(s) to be protected -->
+            <url-pattern>/api/*</url-pattern>
+            <!-- If you list http methods, only those methods are protected so -->
+            <!-- the constraint below ensures all other methods are denied     -->
+            <http-method>DELETE</http-method>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>PUT</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <!-- Anyone with one of the listed roles may access this area -->
+            <role-name>manager-gui</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Default login configuration uses form-based authentication -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Example Form-Based Authentication Area</realm-name>
+        <form-login-config>
+            <form-login-page>/auth/login.jsp</form-login-page>
+            <form-error-page>/auth/error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <!-- Security roles referenced by this web application -->
+    <security-role>
+        <role-name>manager-gui</role-name>
+    </security-role>
 </web-app>
