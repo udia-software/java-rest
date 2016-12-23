@@ -20,7 +20,13 @@ dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0.2'
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.25'
     compile group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.25'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version: '2.25'
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.25'
+    compile group: 'org.json', name: 'json', version: '20160810'
+    compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
