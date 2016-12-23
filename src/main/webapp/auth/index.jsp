@@ -23,7 +23,7 @@
 %>
 <html>
 <head>
-<title>Protected Page for Examples</title>
+<title>Protected Page</title>
 </head>
 <body bgcolor="white">
 

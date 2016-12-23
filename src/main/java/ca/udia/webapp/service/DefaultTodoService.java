@@ -1,7 +1,6 @@
 package ca.udia.webapp.service;
 
 import ca.udia.webapp.entity.Todo;
-import ca.udia.webapp.entity.User;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,17 +18,7 @@ public class DefaultTodoService implements TodoService {
     // Singleton for demonstration, in a practical scenario, use dependency injection
     private static final DefaultTodoService INSTANCE = new DefaultTodoService();
 
-    // Simulate single user for demo
-    private final User user;
-
     public DefaultTodoService() {
-        // create a user
-        User user = new User();
-        user.setUsername("udia");
-        user.setGivenName("Adam");
-        user.setSurname("West");
-        this.user = user;
-
         // add one sample todoObject
         create("Hello world!", false);
     }
@@ -70,10 +59,6 @@ public class DefaultTodoService implements TodoService {
     @Override
     public Todo deleteById(String id) {
         return this.todos.remove(id);
-    }
-
-    protected User getCurrentUser() {
-        return this.user;
     }
 
     public static TodoService getInstance() {

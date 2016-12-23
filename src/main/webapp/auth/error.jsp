@@ -16,7 +16,7 @@
 --%>
 <html>
 <head>
-<title>Error Page For Examples</title>
+<title>Error Page</title>
 </head>
 <body bgcolor="white">
 Invalid username and/or password, please try

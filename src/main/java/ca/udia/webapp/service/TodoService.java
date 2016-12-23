@@ -1,7 +1,6 @@
 package ca.udia.webapp.service;
 
 import ca.udia.webapp.entity.Todo;
-import ca.udia.webapp.entity.User;
 
 import java.util.List;
 
